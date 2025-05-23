@@ -64,7 +64,7 @@ async function createCardImage(IdCard, fieldSide) {
     cardImage.setAttribute("data-id", IdCard);
     cardImage.classList.add("card");
 
-    if (fieldSide === state.playerSides.player1) {
+    if (fieldSide == state.playerSides.player1) {
         cardImage.addEventListener("mouseover", () => {
             drawSelectCard(IdCard);
         });
@@ -111,7 +111,7 @@ async function showHiddenCardFieldsImages(value) {
 
 async function hiddenCardDetails() {
     state.cardSprites.avatar.src = "";
-    state.cardSprites.name,innerText = "Selecione";
+    state.cardSprites.name.innerText = "Selecione";
     state.cardSprites.type.innerText = "uma carta";
 }
 
@@ -126,9 +126,9 @@ async function updateScore() {
 
 async function checkDuelResults(playerCardId, computerCardId) {
     let duelResults = "Draw";
-    let player = cardData[playerCardId];
+    let playerCard = cardData[playerCardId];
 
-    if (playerCardId.WinOf.includes(computerCardId)) {
+    if (playerCard.WinOf.includes(computerCardId)) {
         duelResults = "Win";
         state.score.playerScore++;
     }
@@ -190,7 +190,9 @@ function init() {
     drawCards(5, state.playerSides.player1);
     drawCards(5, state.playerSides.computer);
 
-    const bgm = document.getElementById("bgm ");
+    const bgm = document.getElementById("bgm");
+    bgm.play();
+    bgm.volume = 0.2;
 }
 
 init();
